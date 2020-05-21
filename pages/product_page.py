@@ -33,3 +33,13 @@ class ProductPage(BasePage):
         book_price_in_basket = book_price_in_basket_tag.text    
         return book_price_in_basket
 
+    # элемент не появляется на странице в течение заданного времени
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.BOOK_TITLE_IN_BASKET), \
+           "Success message is presented, but should not be"
+
+    # элемент исчезает на странице в течение заданного времени
+    def message_is_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.BOOK_TITLE_IN_BASKET), \
+           "Success message is not disappeared"
+
