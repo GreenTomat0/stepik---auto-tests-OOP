@@ -19,7 +19,12 @@ class BasePage():
 
 	# открыть страницу логина
 	def go_to_login_page(self):
-		link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
+		link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
+		link.click()
+
+	# открыть корзину
+	def go_to_basket_page(self):
+		link = self.browser.find_element(*BasePageLocators.BASKET_LINK)
 		link.click()
 
 	# метод, который будет проверять наличие ссылки залогиниться
