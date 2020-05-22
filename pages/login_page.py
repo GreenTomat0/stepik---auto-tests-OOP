@@ -4,6 +4,21 @@ from selenium import webdriver
 
 
 class LoginPage(BasePage):
+    # регистрирует пользователя
+    def register_new_user(self, email, password):
+        # вводим email
+        email_input = self.browser.find_element(*LoginPageLocators.REGISTRATION_EMAIL_INPUT)
+        email_input.send_keys(email)
+        # вводим пароль
+        password_input = self.browser.find_element(*LoginPageLocators.REGISTRATION_PASSWORD_INPUT)
+        password_input.send_keys(password)
+        # подтверждаем пароль
+        confirm_password_input = self.browser.find_element(*LoginPageLocators.CONFIRM_REGISTRATION_PASSWORD_INPUT)
+        confirm_password_input.send_keys(password)
+        # жмём на кнопку "зарегистрироваться"
+        register_btn = self.browser.find_element(*LoginPageLocators.REGISTER_BTN)
+        register_btn.click()
+
     def should_be_login_page(self):
         self.should_be_login_url()
         self.should_be_login_form()

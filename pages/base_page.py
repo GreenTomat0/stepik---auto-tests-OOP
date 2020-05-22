@@ -19,7 +19,7 @@ class BasePage():
 
 	# открыть страницу логина
 	def go_to_login_page(self):
-		link = self.browser.find_element(*BasePageLocators.LOGIN_LINK_INVALID)
+		link = self.browser.find_element(*BasePageLocators.LOGIN_LINK)
 		link.click()
 
 	# открыть корзину
@@ -72,5 +72,10 @@ class BasePage():
 	        return False
 
 	    return True
+
+	# Проверяем, что пользователь залогинен
+	def should_be_authorized_user(self):
+		assert self.is_element_present(*BasePageLocators.USER_ICON), "User icon is not presented," \
+																	 " probably unauthorised user"
 
 
