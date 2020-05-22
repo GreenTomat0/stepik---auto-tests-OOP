@@ -27,3 +27,4 @@ class ProductPageLocators():
 class BasketPageLocators():
 	BASKET_ITEMS = (By.CSS_SELECTOR, ".basket-items")
 	BASKET_EMPTY_MSG = (By.CSS_SELECTOR, "#content_inner p")
+	

@@ -22,21 +22,21 @@ class TestLoginFromMainPage():
 		page.open()
 		page.should_be_login_link()
 
-@pytest.mark.skip
+# @pytest.mark.skip
 def test_guest_shoul_open_login_page(browser):
 	link = "http://selenium1py.pythonanywhere.com/accounts/login/"
 	page = LoginPage(browser, link)
 	page.open()
 	page.should_be_login_url()
 
-@pytest.mark.skip
+# @pytest.mark.skip
 def test_guest_should_see_login_form(browser):
 	link = "http://selenium1py.pythonanywhere.com/accounts/login/"
 	page = LoginPage(browser, link)
 	page.open()
 	page.should_be_login_form()
 
-@pytest.mark.skip
+# @pytest.mark.skip
 def test_guest_should_see_register_form(browser):
 	link = "http://selenium1py.pythonanywhere.com/accounts/login/"
 	page = LoginPage(browser, link)

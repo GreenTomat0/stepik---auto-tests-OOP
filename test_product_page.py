@@ -61,8 +61,8 @@ class TestUserAddToBasketFromProductPage():
 
 
 # Добавляем товар в корзину и проверяем, что нет сообщения об успешном добавлении товара (это падающий тест - сообщение должно быть)
-#@pytest.mark.xfail
-@pytest.mark.skip
+@pytest.mark.xfail
+#@pytest.mark.skip
 def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
 	link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 	page = ProductPage(browser, link)
@@ -72,8 +72,8 @@ def test_guest_cant_see_success_message_after_adding_product_to_basket(browser):
 	page.should_not_be_success_message()
 
 # Проверяем, что сообщение об успешном добавлении товара в корзину исзечает (это падающий тест - сообщение не должно исчезать)
-#@pytest.mark.xfail
-@pytest.mark.skip
+@pytest.mark.xfail
+#@pytest.mark.skip
 def test_message_disappeared_after_adding_product_to_basket(browser):
 	link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 	page = ProductPage(browser, link)
@@ -83,7 +83,7 @@ def test_message_disappeared_after_adding_product_to_basket(browser):
 	page.message_is_disappeared()
 
 # Гость должен видеть ссылку на страницу логина
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_guest_should_see_login_link_on_product_page(browser):
 	link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
 	page = ProductPage(browser, link)
@@ -91,14 +91,14 @@ def test_guest_should_see_login_link_on_product_page(browser):
 	page.should_be_login_link()
 
 # Гость может перейти на страницу логина
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_guest_can_go_to_login_page_from_product_page(browser):
 	link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
 	page = ProductPage(browser, link)
 	page.open()
 	page.go_to_login_page()
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
 	link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
 	page = BasePage(browser, link)
