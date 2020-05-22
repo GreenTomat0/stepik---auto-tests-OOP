@@ -21,6 +21,7 @@ class TestUserAddToBasketFromProductPage():
 		# проверить, что пользователь залогинен
 		self.login_page.should_be_authorized_user()
 
+	@pytest.mark.need_review
 	def test_user_can_add_product_to_basket(self, browser):
 		link = "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/"
 		page = ProductPage(browser, link)
@@ -30,11 +31,8 @@ class TestUserAddToBasketFromProductPage():
 		page.add_to_basket() # добавить в корзину
 		book_title_in_basket = page.book_title_in_basket() # получить название книги, которая добавлена в корзину
 		book_price_in_basket = page.book_price_in_basket() # получить цену книги, которая добавлена в корзину
-
-		# проверить, что название книги, которую добавляли в корзину, совпадает с названием книги, которая добавлена в корзину
-		assert book_title == book_title_in_basket, "No necessary book is added to the basket"
-		# проверить, что цена книги, которую добавляли в корзину, совпадает с ценой книги, которая добавлена в корзину
-		assert book_price == book_price_in_basket, "prices don't match"
+		# проверить, что название и цена книги, которую добавляли в корзину, совпадает с названием и ценой книги, которая добавлена в корзину
+		page.books_are_equal(book_title, book_title_in_basket, book_price, book_price_in_basket)
 
 	# НЕ добавляем товар в корзину и проверяем, что нет сообщения об успешном добавлении товара (это работающий тест)
 	def test_user_cant_see_success_message(self, browser):
@@ -44,6 +42,7 @@ class TestUserAddToBasketFromProductPage():
 		page.should_not_be_success_message()
 
 # незарегистрированный пользователь может добавить книги в корзину на страницах с промо-акцией
+@pytest.mark.need_review
 @pytest.mark.parametrize('link', ["http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer0",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer1",
                                   "http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer2",
@@ -94,12 +93,14 @@ def test_guest_should_see_login_link_on_product_page(browser):
 	page.should_be_login_link()
 
 # Гость может перейти на страницу логина
+@pytest.mark.need_review
 def test_guest_can_go_to_login_page_from_product_page(browser):
 	link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
 	page = ProductPage(browser, link)
 	page.open()
 	page.go_to_login_page()
 
+@pytest.mark.need_review
 def test_guest_cant_see_product_in_basket_opened_from_product_page(browser):
 	link = "http://selenium1py.pythonanywhere.com/en-gb/catalogue/the-city-and-the-stars_95/"
 	page = BasePage(browser, link)

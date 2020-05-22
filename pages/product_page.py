@@ -33,6 +33,13 @@ class ProductPage(BasePage):
         book_price_in_basket = book_price_in_basket_tag.text    
         return book_price_in_basket
 
+    # проверить, что название и цена добавленной книги совпадает с названием и ценой книги в корзине
+    def books_are_equal(self, title1, title2, price1, price2):
+        assert title1 == title2, \
+            "Books titles don't match"
+        assert price1 == price2, \
+            "Prices don't match"
+
     # элемент не появляется на странице в течение заданного времени
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.BOOK_TITLE_IN_BASKET), \
