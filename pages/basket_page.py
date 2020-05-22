@@ -14,6 +14,3 @@ class BasketPage(BasePage):
         msg_container = self.browser.find_element(*BasketPageLocators.BASKET_EMPTY_MSG)
         msg = msg_container.text
         assert "Your basket is empty." in msg, "No message about empty basket"
-
-
-
