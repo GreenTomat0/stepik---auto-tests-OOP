@@ -1,2 +1,1 @@
-# stepik---auto-tests-OOP
-Финальное задание с курса stepik "Автоматизация тестирования с помощью Selenium и Python"
+Final task from the course "Test automation with Selenium and Python" on the Stepik platform
